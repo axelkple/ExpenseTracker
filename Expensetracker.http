@@ -1,0 +1,20 @@
+@Expensetracker_HostAddress = http://localhost:5187
+
+GET {{Expensetracker_HostAddress}}/weatherforecast/
+Accept: application/json
+###
+GET http://localhost:5187/users
+
+###
+GET http://localhost:5187/users/1
+
+###
+POST http://localhost:5187/users
+Content-Type: application/json
+
+{
+  "firstName": "loui",
+  "lastName": "dieu",
+  "email": " nono225.kim@example.com",
+  "password": "SuperSecret123!"
+}
