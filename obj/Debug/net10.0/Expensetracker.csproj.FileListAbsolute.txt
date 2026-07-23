@@ -149,3 +149,4 @@ C:\Users\axelk\Documents\my personal project\ExpenseTracker\Expensetracker\bin\D
 C:\Users\axelk\Documents\my personal project\ExpenseTracker\Expensetracker\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\axelk\Documents\my personal project\ExpenseTracker\Expensetracker\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\axelk\Documents\my personal project\ExpenseTracker\Expensetracker\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\axelk\Documents\my personal project\ExpenseTracker\Expensetracker\obj\Debug\net10.0\Expensetracker.sourcelink.json

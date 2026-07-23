@@ -12,7 +12,7 @@ public static class UsersEndpoints
     public static void MapUserEndpoints(this WebApplication app)
     {
         var group = app.MapGroup("/users");
-        
+
         // GET /user(by id)
         group.MapGet("/{id:int}", async (int id, ExpenseTrackerContext dbContext) =>
         {
@@ -34,18 +34,18 @@ public static class UsersEndpoints
 
         // GET /user(all)
         group.MapGet("/", async (ExpenseTrackerContext dbcontext) =>
-         await dbcontext.Users
-             .AsNoTracking()
-             .Select(User => new UserDto
-             {
-                 Id = User.Id,
-                 FirstName = User.FirstName,
-                 LastName = User.LastName,
-                 Email = User.Email,
-                 CreatedAt = User.CreatedAt
-             })
-             .ToListAsync());
-
+        await dbcontext.Users
+            .AsNoTracking()
+            .Select(User => new UserDto
+            {
+                Id = User.Id,
+                FirstName = User.FirstName,
+                LastName = User.LastName,
+                Email = User.Email,
+                CreatedAt = User.CreatedAt
+            })
+            .ToListAsync());
+         // POST user
         group.MapPost("/", async (CreateUserDto newUser, ExpenseTrackerContext dbContext) =>
         {
             bool emailExists = await dbContext.Users.AnyAsync(u => u.Email == newUser.Email);
@@ -82,6 +82,34 @@ public static class UsersEndpoints
                 new { id = user.Id },
                 userDto
             );
+        });
+
+        // PUT/games/id
+
+        group.MapPut("/{id}", async (int id, UpdateUserDto updateUser, ExpenseTrackerContext dbcontext) =>
+        {
+            var existingUser = await dbcontext.Users.FindAsync(id);
+            if (existingUser is null)
+            {
+
+                return Results.NoContent();
+            }
+            existingUser.FirstName = updateUser.FirstName;
+            existingUser.LastName = updateUser.LastName;
+
+
+            await dbcontext.SaveChangesAsync();
+
+            return Results.NoContent();
+        });
+
+        // Gelete /user(id)
+        group.MapDelete("/{id}", async (int id, ExpenseTrackerContext dbcontext) =>
+        {
+            await dbcontext.Users.Where(user => user.Id == id).ExecuteDeleteAsync();
+
+            return Results.NoContent();
+
         });
     }
 

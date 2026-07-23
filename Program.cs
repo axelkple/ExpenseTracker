@@ -25,6 +25,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapUserEndpoints();
-
+app.MapAccountEndpoints();
+app.MapExpenseEndpoints();
+app.MapPaymentMethodEndpoints();
 app.MigrateDb();
 app.Run();

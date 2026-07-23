@@ -6,7 +6,7 @@ Accept: application/json
 GET http://localhost:5187/users
 
 ###
-GET http://localhost:5187/users/1
+GET http://localhost:5187/users/4
 
 ###
 POST http://localhost:5187/users
@@ -17,4 +17,60 @@ Content-Type: application/json
   "lastName": "dieu",
   "email": " nono225.kim@example.com",
   "password": "SuperSecret123!"
+}
+
+###
+
+PUT http://localhost:5187/users/4
+Content-Type: application/json
+
+{
+  "firstName": "loui22",
+  "lastName": "dieu"
+  
+}
+###
+DELETE  http://localhost:5187/users/4
+
+###
+GET http://localhost:5187/accounts/5
+
+###
+GET http://localhost:5187/accounts
+
+####
+POST http://localhost:5187/accounts
+Content-Type: application/json
+
+{
+  "Name": "save35",
+  "UserId": 2,
+  "Type": "saving",
+  "Balance": 2000.00,
+  "Currency": "CAD",
+  "isActive": true
+}
+
+###
+PUT http://localhost:5187/accounts/5
+Content-Type: application/json
+
+{
+  "Name": "loui22",
+  "IsActive": true
+  
+}
+
+###
+DELETE  http://localhost:5187/accounts/4
+
+###
+
+POST http://localhost:5187/paymentmethod
+Content-Type: application/json
+
+{
+  "Name": "save35",
+  "UserId": 2,
+ 
 }

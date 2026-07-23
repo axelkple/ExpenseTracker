@@ -4,6 +4,9 @@ namespace ExpenseTracker.Dtos;
 
 public class CreateAccountDto
 {
+
+    [Required]
+    public int UserId { get; set; }
     [Required, MaxLength(100)]
     public string Name { get; set; }
 
@@ -14,4 +17,6 @@ public class CreateAccountDto
 
     [Required, MaxLength(3)]
     public string Currency { get; set; }
+
+    public bool IsActive { get; set; }
 }
