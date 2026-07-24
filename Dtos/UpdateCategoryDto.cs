@@ -12,4 +12,6 @@ public class UpdateCategoryDto
 
     [MaxLength(7)]
     public string Color { get; set; }
+
+    public int? ParentCategoryId { get; set; }
 }

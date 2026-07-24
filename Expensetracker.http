@@ -70,7 +70,130 @@ POST http://localhost:5187/paymentmethod
 Content-Type: application/json
 
 {
-  "Name": "save35",
-  "UserId": 2,
+  "Name": "save355",
+  "UserId": 1
+  
  
 }
+
+###
+DELETE  http://localhost:5187/paymentmethod/2
+
+###
+GET http://localhost:5187/paymentmethod/1
+
+###
+GET http://localhost:5187/paymentmethod
+
+###
+
+POST http://localhost:5187/expenses
+Content-Type: application/json
+
+{
+   "userId": 1,
+  "categoryId": 6,
+  "accountId": 1,
+  "amount": 42.50,
+  "currency": "CAD",
+  "description": "Groceries",
+  "expenseDate": "2026-07-22T00:00:00Z",
+  "isRecurring": false
+}
+
+###
+DELETE  http://localhost:5187/expenses/2
+
+###
+GET http://localhost:5187/expenses/1
+
+###
+GET http://localhost:5187/expenses
+
+###
+PUT http://localhost:5187/expenses/8
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "categoryId": 6,
+  "accountId": 1,
+  "amount": 80.50,
+  "currency": "USD",
+  "description": "GAS",
+  "expenseDate": "2026-07-22T00:00:00Z",
+  "isRecurring": false
+}
+
+###
+
+POST http://localhost:5187/categories
+Content-Type: application/json
+
+{
+"name": "Utilities",
+  "icon": "zap",
+  "color": "#FF0000",
+  "parentCategoryId": null
+
+}
+
+###
+DELETE  http://localhost:5187/categories/1
+
+###
+GET http://localhost:5187/categories/1
+
+###
+GET http://localhost:5187/categories
+
+
+###
+
+POST http://localhost:5187/recurringexpenses
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "amount": 15.99,
+  "description": "Netflix Subscription",
+  "frequency": "Monthly",
+  "startDate": "2026-08-01T00:00:00Z",
+  "EndDate":"2026-09-01T00:00:00Z",
+  "NextOccurrence":"2026-10-01T00:00:00Z",
+  "categoryId": 6,
+  "accountId": 3,
+  "IsActive":true
+}
+
+###
+DELETE  http://localhost:5187/recurringexpenses/1
+
+###
+GET http://localhost:5187/recurringexpenses/1
+
+###
+GET http://localhost:5187/recurringexpenses
+
+
+###
+
+# POST http://localhost:5187/attachments
+# Content-Type: application/json
+
+# {
+#   "expenseId": 1,
+#   "fileName": "receipt_test.txt",
+#   "contentType": "text/plain",
+#   "UploadedAt": "2026-08-01T00:00:00Z",
+#   "FileUrl": "SGVsbG8sIHRoaXMgaXMgYSB0ZXN0IHJlY2VpcHQgZmlsZSE="
+# }
+
+# ###
+# DELETE  http://localhost:5187/attachments/1
+
+# ###
+# GET http://localhost:5187/attachments/1
+
+# ###
+# GET http://localhost:5187/attachments

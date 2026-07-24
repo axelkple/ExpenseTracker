@@ -7,4 +7,5 @@ public class AttachmentDto
     public string FileUrl { get; set; }
     public string ContentType { get; set; }
     public DateTime UploadedAt { get; set; }
+    public int ExpenseId { get; init; }
 }

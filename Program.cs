@@ -1,3 +1,4 @@
+using Expensetracker.Endpoints;
 using ExpenseTracker.Data;
 using ExpenseTracker.Endpoints;
 
@@ -27,6 +28,9 @@ app.UseHttpsRedirection();
 app.MapUserEndpoints();
 app.MapAccountEndpoints();
 app.MapExpenseEndpoints();
+app.MapCategoryEndpoints();
+app.MapRecurringExpenseEndpoints();
+app.MapAttachmentEndpoints();
 app.MapPaymentMethodEndpoints();
 app.MigrateDb();
 app.Run();

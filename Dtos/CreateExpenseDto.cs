@@ -1,8 +1,11 @@
 namespace ExpenseTracker.Dtos;
+
 using System.ComponentModel.DataAnnotations;
 
 public class CreateExpenseDto
 {
+     [Required]
+    public int UserId { get; set; } // I have to remove this due to authenfication
     [Required]
     public int CategoryId { get; set; }
 
@@ -15,13 +18,13 @@ public class CreateExpenseDto
     public decimal Amount { get; set; }
 
     [Required, MaxLength(3)]
-    public string Currency { get; set; }
+    public string? Currency { get; set; }
 
     [MaxLength(500)]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [Required]
     public DateTime ExpenseDate { get; set; }
-
+    public bool IsRecurring { get; set; }
     public List<int> TagIds { get; set; } = new();
 }

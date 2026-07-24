@@ -16,12 +16,16 @@ public class UpdateExpenseDto
 
     [Required, Range(0.01, double.MaxValue)]
     public decimal Amount { get; set; }
+    [Required, MaxLength(3)]
+    public string Currency { get; set; }
 
     [MaxLength(500)]
     public string Description { get; set; }
 
     [Required]
     public DateTime ExpenseDate { get; set; }
+
+    public bool IsRecurring { get; set; }
 
     public List<int> TagIds { get; set; } = new();
 }
