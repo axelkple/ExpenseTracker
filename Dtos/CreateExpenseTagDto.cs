@@ -2,10 +2,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ExpenseTracker.Dtos;
 
-public class CreateTagDto
+public class CreateExpenseTagDto
 {
     [Required]
     public int UserId { get; set; } // I have to remove this due to authenfication
-    [Required, MaxLength(50)]
-    public string Name { get; set; }
+    [Required]
+    public int ExpenseId { get; set; }
+    [Required]
+    public int TagId { get; set; }
 }

@@ -33,5 +33,7 @@ app.MapRecurringExpenseEndpoints();
 app.MapAttachmentEndpoints();
 app.MapPaymentMethodEndpoints();
 app.MapBudgetEndpoints();
+app.MapTagEndpoints();
+app.MapExpenseTagEndpoints();
 app.MigrateDb();
 app.Run();
