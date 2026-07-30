@@ -6,14 +6,14 @@ Accept: application/json
 GET http://localhost:5187/users
 
 ###
-GET http://localhost:5187/users/4
+GET http://localhost:5187/users/6
 
 ###
 POST http://localhost:5187/users
 Content-Type: application/json
 
 {
-  "firstName": "loui",
+  "firstName": "koikoi",
   "lastName": "dieu",
   "email": " nono225.kim@example.com",
   "password": "SuperSecret123!"
@@ -21,12 +21,13 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5187/users/4
+PUT http://localhost:5187/users/6
 Content-Type: application/json
 
 {
   "firstName": "loui22",
-  "lastName": "dieu"
+  "lastName": "dieu",
+   "email": "nonooo225.kim@example.com",
   
 }
 ###

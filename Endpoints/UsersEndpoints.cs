@@ -96,6 +96,7 @@ public static class UsersEndpoints
             }
             existingUser.FirstName = updateUser.FirstName;
             existingUser.LastName = updateUser.LastName;
+            existingUser.Email= updateUser.Email;
 
 
             await dbcontext.SaveChangesAsync();
