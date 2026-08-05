@@ -21,7 +21,7 @@ public static class PaymentMethodEndpoints
             {
                 Name = paymentmethod.Name,
                 Id = paymentmethod.Id,
-              //  IsSystemDefault = paymentmethod.UserId == null
+                //  IsSystemDefault = paymentmethod.UserId == null
             };
 
             return Results.Ok(paymentMethodDto);
@@ -36,11 +36,11 @@ public static class PaymentMethodEndpoints
            {
                Id = paymentMethod.Id,
                Name = paymentMethod.Name,
-             //  IsSystemDefault = paymentMethod.UserId == null,
+               //  IsSystemDefault = paymentMethod.UserId == null,
 
 
            })
-          
+
            .ToListAsync());
 
 
@@ -75,9 +75,76 @@ public static class PaymentMethodEndpoints
         });
 
 
+        group.MapDelete("/{id:int}", async (int id, ExpenseTrackerContext dbContext) =>
+      {
+          var paymentMethod = await dbContext.PaymentMethods
+              .FirstOrDefaultAsync(c => c.Id == id);
+
+          if (paymentMethod is null)
+          {
+              return Results.NotFound();
+          }
+
+          // Prevent deletion if expenses are assigned to this category
+          var hasExpenses = await dbContext.Expenses
+              .AnyAsync(e => e.PaymentMethodId == id);
+
+          if (hasExpenses)
+          {
+              return Results.BadRequest("Cannot delete this category because expenses are assigned to it.");
+          }
+
+          dbContext.PaymentMethods.Remove(paymentMethod);
+          await dbContext.SaveChangesAsync();
+
+          return Results.NoContent();
+      });
+
+
+       group.MapPut("/{id:int}", async (int id, CreatePaymentMethodDto createPaymentMethod, ExpenseTrackerContext dbContext) =>
+        {
+            var existingPaymentMethod = await dbContext.PaymentMethods
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (existingPaymentMethod is null)
+            {
+                return Results.NotFound();
+            }
+
+            // Prevent setting a category as its own parent
+            // if (createPaymentMethod.ParentCategoryId == id)
+            // {
+            //     return Results.BadRequest("A category cannot be its own parent.");
+            // }
+
+            // Validate parent category exists if provided
+            // if (createPaymentMethod.ParentCategoryId.HasValue)
+            // {
+            //     var parentExists = await dbContext.Categories
+            //         .AnyAsync(c => c.Id == updatedCategory.ParentCategoryId.Value);
+
+            //     if (!parentExists)
+            //     {
+            //         return Results.BadRequest($"Parent category with ID {updatedCategory.ParentCategoryId} does not exist.");
+            //     }
+            // }
+
+            existingPaymentMethod.Name = createPaymentMethod.Name;
+          //  existingPaymentMethod.Icon = createPaymentMethod.Icon;
+      
+
+            await dbContext.SaveChangesAsync();
+
+            return Results.NoContent();
+        });
+
     }
 
-
+    
 
 
 }
+
+
+
+

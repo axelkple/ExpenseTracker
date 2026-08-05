@@ -69,7 +69,7 @@ public static class AccountEndpoints
                 Type = newAccount.Type,
                 Balance = newAccount.Balance,
                 Currency = newAccount.Currency,
-                IsActive = newAccount.IsActive
+                IsActive = true
 
             };
 
@@ -83,7 +83,7 @@ public static class AccountEndpoints
                 Type = account.Type,
                 Balance = account.Balance,
                 Currency = account.Currency,
-                IsActive = account.IsActive
+                IsActive = true
             };
 
             return Results.CreatedAtRoute(

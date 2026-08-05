@@ -44,10 +44,10 @@ POST http://localhost:5187/accounts
 Content-Type: application/json
 
 {
-  "Name": "save35",
-  "UserId": 2,
+  "Name": "save123",
+  "UserId": 10,
   "Type": "saving",
-  "Balance": 2000.00,
+  "Balance": 3000.00,
   "Currency": "CAD",
   "isActive": true
 }
@@ -72,7 +72,7 @@ Content-Type: application/json
 
 {
   "Name": "save355",
-  "UserId": 1
+  "UserId": 10
   
  
 }

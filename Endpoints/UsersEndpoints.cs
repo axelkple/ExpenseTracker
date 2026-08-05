@@ -42,7 +42,8 @@ public static class UsersEndpoints
                 FirstName = User.FirstName,
                 LastName = User.LastName,
                 Email = User.Email,
-                CreatedAt = User.CreatedAt
+                CreatedAt = User.CreatedAt,
+                
             })
             .ToListAsync());
          // POST user
